@@ -100,6 +100,8 @@ export default createRoute({
 
 ```
 
+### AutoHooks 
+Spark uses the "@fastify/autoload" plugin that checks for the presence of "autohook 
 > The explanation above applies to the default behaviour baked into the template, as said it uses "awilix" module loader and "@fastify/autoload" features and every aspect of it can be customized in the "./config.ts" file
 
 ### Dependency Injection
