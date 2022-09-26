@@ -1,0 +1,1 @@
+export const InjectableName = Symbol('Dependency Injectable Name');

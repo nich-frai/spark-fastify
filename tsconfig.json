@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",                                  
+    "lib": ["ESNext"],                                        
+    "module": "ES2022",    
+
+    "rootDir": "./",                                  
+    "moduleResolution": "NodeNext",                       
+    "baseUrl": "./",                                  
+    "paths": {
+			"@fastify/awilix/classic" : ["./node_modules/@fastify/awilix/lib/classic"],
+
+			"#routes/*" : ["src/routes/*"],
+			"#lib/*" : ["src/lib/*"],
+			"#core/*" : ["src/core/*"],
+			"#shared/*" : ["src/shared/*"],
+		},                                      
+    "outDir": "./dist",                                   
+    
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+
+		"removeComments": true,                           
+    "importHelpers": true,                            
+    "importsNotUsedAsValues": "error",               
+    "noEmitOnError": true,                            
+    "isolatedModules": true,                          
+    "allowSyntheticDefaultImports": true,             
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,            
+
+    "strict": true,                                      
+    "noFallthroughCasesInSwitch": true,               
+    "noImplicitOverride": true,                       
+    "skipDefaultLibCheck": true,                      
+    "skipLibCheck": true                                 
+  },
+	"include": ["src/**/*.ts"],
+}
