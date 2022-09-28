@@ -5,7 +5,7 @@ import type Service1 from "#lib/+service1";
 export default createRoute(
 	{
 		
-		url : '/do',
+		url : '',
 		method : 'post',
 
 		schema: {

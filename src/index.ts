@@ -13,7 +13,7 @@ import autoload from '@fastify/autoload'
 import fastifyHelmet from "@fastify/helmet"
 
 import { SparkConfig } from './config'
-import { container } from './dependency_container'
+import { container } from './core/dependency_container'
 import fastifyCookie from '@fastify/cookie'
 
 const config = SparkConfig

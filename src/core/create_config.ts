@@ -6,7 +6,7 @@ import type { FastifyHttpsOptions, FastifyListenOptions, FastifyServerOptions } 
 import { randomUUID } from "node:crypto";
 import type { Server } from "node:https";
 import path from "node:path";
-import { container } from "../dependency_container";
+import { container } from "./dependency_container";
 import { InjectableName } from "./inject";
 import type { PartialDeep } from 'type-fest'
 
