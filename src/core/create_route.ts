@@ -43,8 +43,12 @@ export const createRoute: ICreateRoute = (routeOptions) => {
 			}
 		}
 
+		const url = routeOptions.url?.startsWith('/') ? routeOptions.url : '/' + routeOptions.url ?? '/'
+
 		fastify.route({
 			...routeOptions,
+			method: routeOptions.method?.toLocaleUpperCase() as HTTPMethods ?? 'GET',
+			url,
 			// @ts-ignore Mostly TS complaining that it does not know the response type
 			handler(req, res) {
 
@@ -69,8 +73,6 @@ export const createRoute: ICreateRoute = (routeOptions) => {
 				//@ts-ignore complains that fastify instance do not match because we are using the default generic values
 				return routeOptions.handler(req, res, ...resolvedDependencies)
 			},
-			method: routeOptions.method?.toLocaleUpperCase() as HTTPMethods ?? 'GET',
-			url: routeOptions.url ?? '/'
 		})
 
 		done()
