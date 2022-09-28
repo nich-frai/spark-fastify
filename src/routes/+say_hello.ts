@@ -1,22 +1,20 @@
-import { createRoute } from "#core/create_route";
-import { t } from "#core/schema";
-import type Service1 from "#lib/+service1";
+import { createRoute } from "#core/create_route"
+import { t } from "#core/schema"
+import type SayHelloService from "#lib/+say_hello.service"
 
 export default createRoute(
 	{
+		url : 'hello/:name',
 		
-		url : '',
-		method : 'post',
-
-		schema: {
-			body: t.Object({
-				name: t.String({ minLength : 4 })
+		schema : {
+			params : t.Object({
+				'name' : t.Optional(t.String())
 			}),
 		},
 		
-		handler(req, res, service1 : Service1) {
-			
+		handler(req, _res, sayHelloService : SayHelloService) {
+			return sayHelloService.say(req.params.name)
 		},
 
 	}
-);
+)

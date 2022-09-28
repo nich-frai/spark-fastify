@@ -22,16 +22,16 @@ export function createConfig(options?: PartialDeep<ISparkConfig>): ISparkConfig 
 		injector: {
 			autoload: options?.injector?.autoload ?? DefaultConfig.injector.autoload,
 			autoloadOptions: options?.injector?.autoloadOptions ?? DefaultConfig.injector.autoloadOptions,
-			register : options?.injector?.register ?? DefaultConfig.injector.register,
+			register: options?.injector?.register ?? DefaultConfig.injector.register,
 		},
 
 		routes: {
 			...DefaultConfig.routes,
 			...options?.routes,
-			options : {
+			options: {
 				...options?.routes?.options,
 				// make sure the dependency container is avaliable at all times and cannot be overriden!
-				container : container,
+				container: container,
 			}
 		},
 
@@ -40,7 +40,7 @@ export function createConfig(options?: PartialDeep<ISparkConfig>): ISparkConfig 
 			...options?.server
 		},
 
-		cookies : {
+		cookies: {
 			...DefaultConfig.cookies,
 			...options?.cookies
 		},
@@ -53,8 +53,8 @@ export const DefaultConfig: ISparkConfig = {
 	app: {
 		logger: isDev, //,
 		genReqId: () => randomUUID(),
-		ignoreTrailingSlash : true,
-		caseSensitive : true,
+		ignoreTrailingSlash: true,
+		caseSensitive: true,
 	},
 
 	injector: {
@@ -72,14 +72,21 @@ export const DefaultConfig: ISparkConfig = {
 			cwd: path.resolve(__dirname, '..',),
 			formatName: (name, desc) => {
 				const loadedModule = desc.value as any
+
 				if (loadedModule != null && loadedModule[InjectableName] != null) {
-					return loadedModule[InjectableName];
+					name = loadedModule[InjectableName];
+				} else {
+					const classMatch = loadedModule.toString().match(/class (?<name>.*?)?\{/)
+					if (classMatch != null) name = classMatch.groups.name
 				}
-				return name.replace(/^(\+|\~)/, '')
+
+				name = name.replace(/^(\+|\~)/, '')
+				name =name.charAt(0).toLocaleLowerCase() + name.substring(1)
+				return name
 			}
 		},
 
-		register : {}
+		register: {}
 
 	},
 
@@ -92,7 +99,7 @@ export const DefaultConfig: ISparkConfig = {
 		// ignore everything that does not follow "+name.(t|j)s" pattern
 		// TODO: Ignore ".map.js" and ".d.ts" files!
 		ignorePattern: /^(?:(?!(.+)?\+.+\.(t|j)s$))(.+)\.(t|j)s/,
-		
+
 		cascadeHooks: true,
 		routeParams: true,
 	},
@@ -102,7 +109,7 @@ export const DefaultConfig: ISparkConfig = {
 		port: Number(process.env.SERVER_HOST_PORT ?? 4000),
 	},
 
-	cookies : {}
+	cookies: {}
 }
 
 export interface ISparkConfig {
@@ -111,7 +118,7 @@ export interface ISparkConfig {
 	injector: {
 		autoload: (string | GlobWithOptions)[]
 		autoloadOptions: LoadModulesOptions
-		register? : Record<string, Resolver<any>>
+		register?: Record<string, Resolver<any>>
 	}
 
 	routes: AutoloadPluginOptions
