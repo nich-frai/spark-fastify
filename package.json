@@ -1,7 +1,7 @@
 {
   "name": "spark-fastify",
   "version": "0.0.1",
-  "description": "",
+  "description": "This project is a template for developing REST applications using fastify as base and applying conventions to minimize the need to write glue code",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -38,10 +38,7 @@
     "@fastify/helmet": "^10.0.0",
     "@fastify/multipart": "^7.2.0",
     "@sinclair/typebox": "^0.24.43",
-    "ajv": "^8.11.0",
-    "ajv-formats": "^2.1.1",
     "awilix": "^7.0.3",
-    "deepmerge": "^4.2.2",
     "dotenv": "^16.0.2",
     "fastify": "^4.6.0",
     "kleur": "^4.1.5",
