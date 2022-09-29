@@ -6,14 +6,23 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc --project tsconfig.build.json",
-		"build:run" : "tsc --project tsconfig.build.json && node .",
+    "build:run": "tsc --project tsconfig.build.json && node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["Fastify","Template","Backend","NodeJS","Node","Typebox","Awilix","File routing"],
+  "keywords": [
+    "Fastify",
+    "Template",
+    "Backend",
+    "NodeJS",
+    "Node",
+    "Typebox",
+    "Awilix",
+    "File routing"
+  ],
   "author": {
-		"name": "Nicholas Frai",
-		"url": "https://github.com/nich-frai"
-	},
+    "name": "Nicholas Frai",
+    "url": "https://github.com/nich-frai"
+  },
   "license": "MIT",
   "imports": {
     "#routes/*": "./dist/routes/*.js",
@@ -43,6 +52,7 @@
     "@types/node": "^18.7.20",
     "pino-pretty": "^9.1.0",
     "type-fest": "^3.0.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "vitest": "^0.23.4"
   }
 }
